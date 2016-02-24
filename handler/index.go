@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/banerwai/util/middleware"
+	"github.com/banerwai/gommon/middleware"
 	"github.com/martini-contrib/render"
 )
 

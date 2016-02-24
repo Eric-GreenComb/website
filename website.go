@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/banerwai/util/middleware"
+	"github.com/banerwai/gommon/middleware"
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessions"
