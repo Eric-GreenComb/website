@@ -45,7 +45,7 @@ func main() {
 	m.Use(middleware.InitContext())
 
 	// Setup routing
-	setupSystemRoute(m)
+	setupRoute(m)
 
 	m.Run()
 }

@@ -6,6 +6,7 @@ import (
 )
 
 func ShowIndex(ctx *middleware.Context, ren render.Render) {
+
 	ctx.Set("Website", "Banerwai")
 	ctx.Set("WebsiteTitle", "A Banerwai Website")
 	ctx.Set("WebsiteDetail", "This is a website for banerwai.")
