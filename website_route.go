@@ -48,8 +48,14 @@ func setupCategoryRoute(m *martini.ClassicMartini) {
 
 func setupProfileRoute(m *martini.ClassicMartini) {
 	m.Group("/o/profiles/browse", func(r martini.Router) {
-		r.Get("", handler.ShowProfilesByKey)
+		r.Get("/", handler.ShowProfilesByKey)
 		r.Get("/c/:category", handler.ShowProfilesByCategory)
+		r.Get("/c/:category/sc/:subcategory", handler.ShowProfilesBySubCategory)
+		r.Get("/c/:category/sc/:subcategory/s", handler.SearchProfilesBySubCategory)
+	})
+
+	m.Group("/freelancer", func(r martini.Router) {
+		r.Get("/:id", handler.ShowProfileById)
 	})
 }
 
