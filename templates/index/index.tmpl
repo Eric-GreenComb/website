@@ -1,23 +1,106 @@
-  <div id="layout" class="pure-g"> 
-   <div class="sidebar pure-u-1 pure-u-md-1-4"> 
-    <div class="header"> 
-     <h1 class="brand-title">{{.Response.Website}}</h1> 
-     <h2 class="brand-tagline">{{.Response.WebsiteTitle}}</h2> 
+  <div class="header"> 
+   <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed"> 
+    <a class="pure-menu-heading" href="">{{.Response.Website}}</a> 
+    <ul class="pure-menu-list"> 
+     <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover"> <a href="#" id="menuLink1" class="pure-menu-link">分类</a> 
+      <ul class="pure-menu-children"> 
+       <li class="pure-menu-item"><a href="#" class="pure-menu-link">Email</a></li> 
+       <li class="pure-menu-item"><a href="#" class="pure-menu-link">Twitter</a></li> 
+       <li class="pure-menu-item"><a href="/signup" class="pure-menu-link">Tumblr Blog</a></li> 
+      </ul> 
+     </li> 
+     <li class="pure-menu-item"><a href="/signup" class="pure-menu-link">注册</a></li>     
+     <li class="pure-menu-item"><a href="/login" class="pure-menu-link">登录</a></li>
+     <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover"> <a href="#" id="menuLink2" class="pure-menu-link">帮助</a> 
+      <ul class="pure-menu-children"> 
+       <li class="pure-menu-item"><a href="/i/how/client" class="pure-menu-link">怎样找人</a></li> 
+       <li class="pure-menu-item"><a href="/i/how/beafreelancer" class="pure-menu-link">怎样找活</a></li> 
+      </ul> 
+     </li>
+     <li class="pure-menu-item"></li>
+    </ul> 
+   </div> 
+  </div> 
+  <div class="splash-container"> 
+   <div class="splash"> 
+    <h1 class="splash-head">{{.Response.Website}}</h1> 
+    <p class="splash-subhead"> {{.Response.WebsiteDetail}} </p> 
+   </div> 
+  </div> 
+  <div class="content-wrapper"> 
+   <div class="content"> 
+    <h2 class="content-head is-center">为您的团队寻找合适的人</h2> 
+    <div class="pure-g"> 
+     <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+      <a href="#"><h3 class="content-subhead"> <i class="fa fa-rocket"></i>Web,移动和软件开发</h3></a>  
+      <p> Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum. </p>
+
+     </div> 
+     <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"> 
+      <a href="#"><h3 class="content-subhead"> <i class="fa fa-mobile"></i>营销</h3></a> 
+      <p> Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum. </p> 
+     </div> 
+     <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"> 
+      <a href="#"><h3 class="content-subhead"> <i class="fa fa-th-large"></i>设计创意</h3></a>
+      <p> Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum. </p> 
+     </div> 
+     <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"> 
+      <a href="#"><h3 class="content-subhead"> <i class="fa fa-check-square-o"></i>IT及网络</h3></a> 
+      <p> Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum. </p> 
+     </div> 
+     <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"> 
+      <a href="#"><h3 class="content-subhead"> <i class="fa fa-rocket"></i>数据-数据分析</h3></a> 
+      <p> Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum. </p> 
+     </div> 
+     <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"> 
+      <a href="#"><h3 class="content-subhead"><i class="fa fa-mobile"></i>写作</h3></a> 
+      <p> Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum. </p> 
+     </div> 
+     <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"> 
+      <a href="#"><h3 class="content-subhead"> <i class="fa fa-th-large"></i>翻译</h3></a> 
+      <p> Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum. </p> 
+     </div> 
+     <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4"> 
+      <a href="#"><h3 class="content-subhead"> <i class="fa fa-check-square-o"></i>法律</h3></a> 
+      <p> Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum. </p> 
+     </div> 
+    </div>    
+    <p class="is-center"><a href="http://purecss.io" class="pure-button pure-button-primary">所有分类</a></p>
+   </div> 
+   <div class="ribbon l-box-lrg pure-g"> 
+    <div class="l-box-lrg is-center pure-u-1 pure-u-md-1-2 pure-u-lg-2-5"> 
+     <img class="pure-img-responsive" alt="File Icons" width="300" src="/img/common/file-icons.png" /> 
+    </div> 
+    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-3-5"> 
+     <h2 class="content-head content-head-ribbon">Laboris nisi ut aliquip.</h2> 
+     <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor. </p> 
     </div> 
    </div> 
-   <div class="content pure-u-1 pure-u-md-3-4"> 
-    <div> 
-     <div class="post-description">{{.Response.WebsiteDetail}}
-     </div>
-     <div class="footer"> 
-      <div class="pure-menu pure-menu-horizontal"> 
-       <ul> 
-        <li class="pure-menu-item"><a href="http://purecss.io/" class="pure-menu-link">About</a></li> 
-        <li class="pure-menu-item"><a href="http://twitter.com/yuilibrary/" class="pure-menu-link">Twitter</a></li> 
-        <li class="pure-menu-item"><a href="http://github.com/yahoo/pure/" class="pure-menu-link">GitHub</a></li> 
-       </ul> 
-      </div> 
+   <div class="content"> 
+    <h2 class="content-head is-center">Dolore magna aliqua. Uis aute irure.</h2> 
+    <div class="pure-g"> 
+     <div class="l-box-lrg pure-u-1 pure-u-md-2-5"> 
+      <form class="pure-form pure-form-stacked"> 
+       <fieldset> 
+        <label for="name">Your Name</label> 
+        <input id="name" type="text" placeholder="Your Name" /> 
+        <label for="email">Your Email</label> 
+        <input id="email" type="email" placeholder="Your Email" /> 
+        <label for="password">Your Password</label> 
+        <input id="password" type="password" placeholder="Your Password" /> 
+        <button type="submit" class="pure-button">Sign Up</button> 
+       </fieldset> 
+      </form> 
+     </div> 
+     <div class="l-box-lrg pure-u-1 pure-u-md-3-5"> 
+      <h4>Contact Us</h4> 
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p> 
+      <h4>More Information</h4> 
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 
      </div> 
     </div> 
    </div> 
-  </div>  
+   <div class="footer l-box is-center">
+     View the source of this layout to learn more. Made with love by the YUI Team. 
+   </div> 
+  </div> 
