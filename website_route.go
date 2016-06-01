@@ -37,21 +37,20 @@ func setupInfoRoute(m *martini.ClassicMartini) {
 }
 
 func setupCategoryRoute(m *martini.ClassicMartini) {
-	m.Group("/i/catogery", func(r martini.Router) {
-		r.Get("", handler.ShowCategories)
+	m.Group("/c", func(r martini.Router) {
+		r.Get("/", handler.ShowCategories)
 	})
 
-	m.Group("/cat", func(r martini.Router) {
-		r.Get("/:short", handler.ShowCategoryIndex)
+	m.Group("/o/profiles/c", func(r martini.Router) {
+		r.Get("/:category", handler.ShowProfilesByCategory)
+		r.Get("/:category/sc/:subcategory", handler.ShowProfilesBySubCategory)
 	})
 }
 
 func setupProfileRoute(m *martini.ClassicMartini) {
 	m.Group("/o/profiles/browse", func(r martini.Router) {
 		r.Get("/", handler.ShowProfilesByKey)
-		r.Get("/c/:category", handler.ShowProfilesByCategory)
-		r.Get("/c/:category/sc/:subcategory", handler.ShowProfilesBySubCategory)
-		r.Get("/c/:category/sc/:subcategory/s", handler.SearchProfilesBySubCategory)
+
 	})
 
 	m.Group("/freelancer", func(r martini.Router) {

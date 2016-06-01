@@ -26,25 +26,6 @@ func ShowProfilesByKey(ctx *middleware.Context, ren render.Render, w http.Respon
 	})
 }
 
-func ShowProfilesByCategory(ctx *middleware.Context, ren render.Render) {
-	ren.HTML(200, "profile/search_category", ctx, render.HTMLOptions{
-		Layout: "layout/layout",
-	})
-}
-
-func ShowProfilesBySubCategory(ctx *middleware.Context, ren render.Render, w http.ResponseWriter, r *http.Request, params martini.Params) {
-
-	fmt.Println("ShowProfilesBySubCategory")
-
-	_subcat := params["subcategory"]
-
-	ctx.Set("Subcat", _subcat)
-
-	ren.HTML(200, "profile/show_subcategory", ctx, render.HTMLOptions{
-		Layout: "layout/layout",
-	})
-}
-
 func SearchProfilesBySubCategory(ctx *middleware.Context, ren render.Render, w http.ResponseWriter, r *http.Request, params martini.Params) {
 	fmt.Println("SearchProfilesBySubCategory")
 	_subcat := params["subcategory"]
