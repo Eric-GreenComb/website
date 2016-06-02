@@ -1,36 +1,14 @@
-  <div class="header"> 
-   <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed"> 
-    <a class="pure-menu-heading" href="">{{.Response.Website}}</a> 
-    <ul class="pure-menu-list"> 
-     <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover"> <a href="#" id="menuLink1" class="pure-menu-link">浏览</a> 
-      <ul class="pure-menu-children"> 
-       <li class="pure-menu-item"><a href="#" class="pure-menu-link">职位类别</a></li> 
-       <li class="pure-menu-item"><a href="#" class="pure-menu-link">自由职业者</a></li> 
-       <li class="pure-menu-item"><a href="/signup" class="pure-menu-link">工作</a></li> 
-      </ul> 
-     </li> 
-     <li class="pure-menu-item"><a href="/signup" class="pure-menu-link">注册</a></li>     
-     <li class="pure-menu-item"><a href="/login" class="pure-menu-link">登录</a></li>
-     <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover"> <a href="#" id="menuLink2" class="pure-menu-link">帮助</a> 
-      <ul class="pure-menu-children"> 
-       <li class="pure-menu-item"><a href="/i/how/client" class="pure-menu-link">找人工作</a></li> 
-       <li class="pure-menu-item"><a href="/i/how/beafreelancer" class="pure-menu-link">自由职业者</a></li> 
-      </ul> 
-     </li>
-     <li class="pure-menu-item"></li>
-    </ul> 
-   </div> 
-  </div> 
 
    <div class="content"> 
     <h2 class="content-head is-center">为您的团队寻找合适的人</h2> 
     <div class="pure-g">
      {{ range .Response.Categories }}     
      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
-      <a href="#"><h3 class="content-subhead"> <i class="fa fa-rocket"></i>{{.Desc}}</h3></a>
+      <a href="/o/profiles/c/{{.SerialNumber}}"><h3 class="content-subhead"> <i class="fa fa-rocket"></i>{{.Desc}}</h3></a>
       <ul>
+      {{$categoryid:=.SerialNumber}} 
       {{ range .Subcategories }}
-      <li><a href="#">{{.Desc}}</a></li>
+      <li><a href="/o/profiles/c/{{$categoryid}}/sc/{{.SerialNumber}}">{{.Desc}}</a></li>
       {{ end }}
       </ul>
      </div>

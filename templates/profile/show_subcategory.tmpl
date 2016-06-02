@@ -1,7 +1,15 @@
-  <div id="layout" class="pure-g"> 
-   <div class="content pure-u-1"> 
-    <div> 
-     <div class="post-description">/o/profiles/browse/c/{{.Response.Cat}}/sc/{{.Response.Subcat}}</div> 
-    </div> 
+
+   <div class="content"> 
+    <h2 class="content-head is-center">为您的团队寻找合适的人</h2> 
+    <div class="pure-g">
+     {{ range .Response.Profiles }}     
+     <div class="l-box pure-u-1">
+      <a href="/freelancer/{{.Id.Hex}}"><h3 class="content-subhead"> <i class="fa fa-rocket"></i>{{.JobTitle}}</h3></a>
+      <p>{{.Overview}}</p>
+     </div>
+     {{ end }}  
+    </div>    
    </div> 
-  </div>  
+   <div class="footer l-box is-center">
+     View the source of this layout to learn more. Made with love by the YUI Team. 
+   </div> 
