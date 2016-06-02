@@ -2,7 +2,10 @@ package main
 
 import (
 	"github.com/banerwai/website/handler"
+	"github.com/banerwai/website/usecases"
 	"github.com/go-martini/martini"
+	"github.com/martini-contrib/binding"
+	"github.com/martini-contrib/sessionauth"
 )
 
 func setupRoute(m *martini.ClassicMartini) {
@@ -65,8 +68,10 @@ func setupUserRoute(m *martini.ClassicMartini) {
 		r.Get("/contractor", handler.ShowSignupContractor)
 	})
 
-	m.Group("/login", func(r martini.Router) {
-		r.Get("", handler.ShowLogin)
+	m.Group("/", func(r martini.Router) {
+		r.Get("login", handler.LoginForm)
+		r.Post("login", binding.Bind(usecases.UserModel{}), handler.ValidateLogin)
+		r.Get("logout", sessionauth.LoginRequired, handler.Logout)
 	})
 }
 

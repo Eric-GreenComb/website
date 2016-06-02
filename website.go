@@ -1,14 +1,24 @@
 package main
 
 import (
+	"github.com/banerwai/gather/flagparse"
 	"github.com/banerwai/gommon/middleware"
+	"github.com/banerwai/website/usecases"
 	"github.com/go-martini/martini"
 	"github.com/martini-contrib/render"
+	"github.com/martini-contrib/sessionauth"
 	"github.com/martini-contrib/sessions"
 	"html/template"
+	"log"
+	"net/http"
 )
 
 func main() {
+
+	defer log.Println("Shutdown complete!")
+
+	_port := flagparse.BanerwaiWebPort
+	log.Println("Starting Banerwai WebSite Listen on Port " + _port)
 
 	store := sessions.NewCookieStore([]byte("BanerwaiSecret!!!"))
 	m := martini.Classic()
@@ -16,6 +26,9 @@ func main() {
 		MaxAge: 0,
 	})
 	m.Use(sessions.Sessions("BanerwaiSession", store))
+	m.Use(sessionauth.SessionUser(usecases.GenerateAnonymousUser))
+	sessionauth.RedirectUrl = "/login"
+	sessionauth.RedirectParam = "next"
 
 	m.Use(render.Renderer(render.Options{
 		Directory:  "templates",
@@ -38,6 +51,8 @@ func main() {
 		},
 	}))
 
+	m.Use(HelperFuncs())
+
 	// Setup static file serving
 	m.Use(martini.Static("assets"))
 
@@ -47,5 +62,5 @@ func main() {
 	// Setup routing
 	setupRoute(m)
 
-	m.Run()
+	http.ListenAndServe(_port, m)
 }
