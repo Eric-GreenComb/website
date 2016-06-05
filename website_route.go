@@ -63,9 +63,10 @@ func setupProfileRoute(m *martini.ClassicMartini) {
 
 func setupUserRoute(m *martini.ClassicMartini) {
 	m.Group("/signup", func(r martini.Router) {
-		r.Get("", handler.ShowSignup)
-		r.Get("/employer", handler.ShowSignupEmployer)
-		r.Get("/contractor", handler.ShowSignupContractor)
+		r.Get("/user", handler.SignupUserForm)
+		r.Post("/user", handler.RegisterUser)
+		// r.Get("/Invited/:invited", handler.SignupInvitedForm)
+		// r.Post("/Invited/:invited", handler.RegisterInvited)
 	})
 
 	m.Group("/", func(r martini.Router) {

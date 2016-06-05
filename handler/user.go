@@ -1,34 +1,50 @@
 package handler
 
 import (
+	"errors"
+	"fmt"
 	"github.com/banerwai/gather/service"
+	"github.com/banerwai/global/bean"
 	"github.com/banerwai/gommon/middleware"
+	"github.com/banerwai/gommon/regexp"
 	"github.com/banerwai/website/usecases"
 	"github.com/martini-contrib/render"
 	"github.com/martini-contrib/sessionauth"
 	"github.com/martini-contrib/sessions"
+	"labix.org/v2/mgo/bson"
 	"net/http"
+	"strings"
 )
 
-func ShowSignup(ctx *middleware.Context, ren render.Render) {
+func SignupUserForm(ctx *middleware.Context, ren render.Render) {
 
 	ren.HTML(200, "user/signup", ctx, render.HTMLOptions{
 		Layout: "layout/layout",
 	})
 }
 
-func ShowSignupEmployer(ctx *middleware.Context, ren render.Render) {
+func RegisterUser(ctx *middleware.Context, r *http.Request, ren render.Render) {
+	r.ParseForm()
+	_email, _pwd, _invited_email, _err := getSignupInfoByForm(r)
 
-	ren.HTML(200, "user/signup_employer", ctx, render.HTMLOptions{
-		Layout: "layout/layout",
-	})
-}
+	if _err != nil {
+		ren.Redirect("/signup/user", 302)
+		return
+	}
+	var _user_service service.UserService
 
-func ShowSignupContractor(ctx *middleware.Context, ren render.Render) {
+	var _user bean.User
 
-	ren.HTML(200, "user/signup_contractor", ctx, render.HTMLOptions{
-		Layout: "layout/layout",
-	})
+	if len(_invited_email) == 0 {
+		_user.Invited = bson.ObjectIdHex("5707cb10ae6faa1d1071a189")
+	}
+	_user.Email = _email
+	_user.Pwd = _pwd
+
+	fmt.Println(_user)
+	_user_service.CreateBeanUser(_user)
+
+	ren.Redirect("/", 302)
 }
 
 func LoginForm(ctx *middleware.Context, ren render.Render) {
@@ -62,4 +78,28 @@ func ValidateLogin(session sessions.Session, post_user usecases.UserModel, ren r
 	}
 
 	ren.Redirect("/")
+}
+
+func getSignupInfoByForm(r *http.Request) (string, string, string, error) {
+	_email := strings.TrimSpace(r.Form.Get("email"))
+	_invited_email := strings.TrimSpace(r.Form.Get("invited_email"))
+	_pwd := strings.TrimSpace(r.Form.Get("pwd"))
+	_repwd := strings.TrimSpace(r.Form.Get("repwd"))
+
+	if len(_email) == 0 || len(_pwd) == 0 || len(_repwd) == 0 {
+		return "", "", "", errors.New("data can't be null")
+	}
+
+	if !regexp.IsEmail(_email) {
+		return "", "", "", errors.New("input(email) can't match email regex")
+	}
+	if len(_invited_email) == 0 || !regexp.IsEmail(_invited_email) {
+		_invited_email = ""
+	}
+
+	if _pwd != _repwd {
+		return "", "", "", errors.New("pwd need equals repwd")
+	}
+
+	return _email, _pwd, _invited_email, nil
 }
