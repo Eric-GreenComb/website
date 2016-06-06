@@ -19,6 +19,8 @@ func setupRoute(m *martini.ClassicMartini) {
 
 	setupInfoRoute(m)
 
+	setupDashboardRoute(m)
+
 	// 404
 	setup404Route(m)
 }
@@ -73,6 +75,12 @@ func setupUserRoute(m *martini.ClassicMartini) {
 		r.Get("login", handler.LoginForm)
 		r.Post("login", binding.Bind(usecases.UserModel{}), handler.ValidateLogin)
 		r.Get("logout", sessionauth.LoginRequired, handler.Logout)
+	})
+}
+
+func setupDashboardRoute(m *martini.ClassicMartini) {
+	m.Group("/dashboard", func(r martini.Router) {
+		r.Get("/index", sessionauth.LoginRequired, handler.DashboardIndexForm)
 	})
 }
 

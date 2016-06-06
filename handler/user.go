@@ -77,7 +77,7 @@ func ValidateLogin(session sessions.Session, post_user usecases.UserModel, ren r
 		ren.JSON(500, err)
 	}
 
-	ren.Redirect("/")
+	ren.Redirect("/dashboard/index")
 }
 
 func getSignupInfoByForm(r *http.Request) (string, string, string, error) {
