@@ -6,6 +6,7 @@ import (
 	"github.com/martini-contrib/render"
 )
 
+// ShowHowHelp show how / help page
 func ShowHowHelp(ctx *middleware.Context, ren render.Render, params martini.Params) {
 
 	_info := params["help"]

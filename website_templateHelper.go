@@ -27,7 +27,7 @@ var templateFuncs = template.FuncMap{
 	},
 }
 
-// middleware to inject the session stuff
+// HelperFuncs to inject the session stuff
 func HelperFuncs() martini.Handler {
 	return func(r render.Render, user sessionauth.User, s sessions.Session) {
 		r.Template().Funcs(injectHelperFuncs(user, s))

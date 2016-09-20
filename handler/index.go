@@ -5,6 +5,7 @@ import (
 	"github.com/martini-contrib/render"
 )
 
+// ShowIndex show index page
 func ShowIndex(ctx *middleware.Context, ren render.Render) {
 
 	ctx.Set("Website", "班儿外")

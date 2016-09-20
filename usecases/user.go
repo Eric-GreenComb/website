@@ -5,7 +5,7 @@ import (
 	"github.com/martini-contrib/sessionauth"
 )
 
-// MyUserModel can be any struct that represents a user in my system
+// UserModel can be any struct that represents a user in my system
 type UserModel struct {
 	Id            string `form:"id"`
 	Email         string `form:"email"`
@@ -13,7 +13,7 @@ type UserModel struct {
 	authenticated bool   `form:"-"`
 }
 
-// GetAnonymousUser should generate an anonymous user model
+// GenerateAnonymousUser should generate an anonymous user model
 // for all sessions. This should be an unauthenticated 0 value struct.
 func GenerateAnonymousUser() sessionauth.User {
 	return &UserModel{}
@@ -36,10 +36,12 @@ func (u *UserModel) Logout() {
 	u.authenticated = false
 }
 
+// IsAuthenticated if authenticated
 func (u *UserModel) IsAuthenticated() bool {
 	return u.authenticated
 }
 
+// UniqueId UniqueId
 func (u *UserModel) UniqueId() interface{} {
 	return u.Id
 }
@@ -48,8 +50,8 @@ func (u *UserModel) UniqueId() interface{} {
 // a matching id.
 func (u *UserModel) GetById(id interface{}) error {
 	_id := id.(string)
-	var _user_service service.UserService
-	_user, _err := _user_service.GetUserByIDDto(_id)
+	var _userService service.UserService
+	_user, _err := _userService.GetUserByIDDto(_id)
 	if _err != nil {
 		return nil
 	}

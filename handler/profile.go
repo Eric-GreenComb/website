@@ -11,6 +11,7 @@ import (
 	"time"
 )
 
+// SearchProfilesByKey search profiles page by key
 func SearchProfilesByKey(ctx *middleware.Context, ren render.Render, w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
@@ -29,10 +30,11 @@ func SearchProfilesByKey(ctx *middleware.Context, ren render.Render, w http.Resp
 	})
 }
 
+// ShowProfilesByCategory show profiles by category
 func ShowProfilesByCategory(ctx *middleware.Context, ren render.Render, params martini.Params) {
 	_cat := params["category"]
 
-	_category_id, _err := strconv.ParseInt(_cat, 10, 64)
+	_categoryID, _err := strconv.ParseInt(_cat, 10, 64)
 	if _err != nil {
 		ren.HTML(200, "profile/show_category", ctx, render.HTMLOptions{
 			Layout: "layout/layout",
@@ -41,7 +43,7 @@ func ShowProfilesByCategory(ctx *middleware.Context, ren render.Render, params m
 	}
 
 	var _service service.ProfileService
-	_profiles, _ := _service.GetProfilesByCategoryBean(_category_id, time.Now().Unix(), 10)
+	_profiles, _ := _service.GetProfilesByCategoryBean(_categoryID, time.Now().Unix(), 10)
 
 	ctx.Set("Profiles", _profiles)
 
@@ -50,10 +52,11 @@ func ShowProfilesByCategory(ctx *middleware.Context, ren render.Render, params m
 	})
 }
 
+// ShowProfilesBySubCategory show profiles by subcategory
 func ShowProfilesBySubCategory(ctx *middleware.Context, ren render.Render, params martini.Params) {
 	_subcat := params["subcategory"]
 
-	_subcategory_id, _err := strconv.ParseInt(_subcat, 10, 64)
+	_subcategoryID, _err := strconv.ParseInt(_subcat, 10, 64)
 	if _err != nil {
 		ren.HTML(200, "profile/show_subcategory", ctx, render.HTMLOptions{
 			Layout: "layout/layout",
@@ -62,7 +65,7 @@ func ShowProfilesBySubCategory(ctx *middleware.Context, ren render.Render, param
 	}
 
 	var _service service.ProfileService
-	_profiles, _ := _service.GetProfilesBySubCategoryBean(_subcategory_id, time.Now().Unix(), 10)
+	_profiles, _ := _service.GetProfilesBySubCategoryBean(_subcategoryID, time.Now().Unix(), 10)
 
 	ctx.Set("Profiles", _profiles)
 
@@ -71,10 +74,11 @@ func ShowProfilesBySubCategory(ctx *middleware.Context, ren render.Render, param
 	})
 }
 
-func ShowProfileById(ctx *middleware.Context, ren render.Render, params martini.Params) {
-	_profile_id := params["id"]
+// ShowProfileByID show profile by id
+func ShowProfileByID(ctx *middleware.Context, ren render.Render, params martini.Params) {
+	_profileID := params["id"]
 	var _service service.ProfileService
-	_profile, _ := _service.GetProfileBean(_profile_id)
+	_profile, _ := _service.GetProfileBean(_profileID)
 
 	ctx.Set("Profile", _profile)
 

@@ -6,6 +6,7 @@ import (
 	"github.com/martini-contrib/render"
 )
 
+// ShowCategories show categories
 func ShowCategories(ctx *middleware.Context, ren render.Render) {
 	var _service service.CategoryService
 

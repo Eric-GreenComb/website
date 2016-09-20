@@ -59,7 +59,7 @@ func setupProfileRoute(m *martini.ClassicMartini) {
 	})
 
 	m.Group("/freelancer", func(r martini.Router) {
-		r.Get("/:id", handler.ShowProfileById)
+		r.Get("/:id", handler.ShowProfileByID)
 	})
 }
 
