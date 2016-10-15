@@ -72,7 +72,7 @@ func ValidateLogin(session sessions.Session, postUser usecases.UserModel, ren re
 	}
 
 	// authenticate the session
-	user.Id = _userDto.Id.Hex()
+	user.Id = _userDto.ID.Hex()
 	user.Email = _userDto.Email
 
 	err := sessionauth.AuthenticateSession(session, &user)
