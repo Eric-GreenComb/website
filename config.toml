@@ -1,6 +1,6 @@
 baseURL = "http://www.fifu.io/"
 languageCode = "en-us"
-title = "绿蜂巢网络 | AI Blockchain Cloud Stacks"
+title = "GOPPER.IN | AI Blockchain Cloud Stacks"
 theme = "meghna-hugo"
 
 # Menu
@@ -45,8 +45,8 @@ logo = "images/logo.png"
     enable = true
     bgImage = "images/slider/hero-area.jpg"
     icon = "tf-genius"
-    heading = "构建新型智能经济"
-    content= "绿蜂巢网络依托 AI | Blockchain | Cloud 等新型技术和创新型的经济模式，通过服务于各行业的应用，构建经济商业模式和组织形式的新型价值信任网络"
+    heading = "构建新型智能经济生态"
+    content= "GOPPER.IN 依托 AI | Blockchain | Cloud 等新型技术和创新型的经济模式，通过服务于各行业的应用，构建经济商业模式和组织形式的新型价值信任网络"
     btn = true
     btnText="我们的服务"
     btnURL="#services"
@@ -85,13 +85,13 @@ logo = "images/logo.png"
     
     # footer
     [params.footer]
-        copyright = "FiFu Team"
-        copyrightURL = "http://www.fifu.io"
+        copyright = "Gopper.in"
+        copyrightURL = "http://www.gopper.in"
 
         # social Icons
         [[params.footer.socialIcon]]
         icon = "tf-ion-social-github"
-        url = "https://www.github.com/fifu"
+        url = "https://github.com/gopperin"
         
         [[params.footer.socialIcon]]
         icon = "tf-ion-social-twitter"
